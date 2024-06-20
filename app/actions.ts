@@ -1,14 +1,17 @@
 "use server"
 
-import { generateText } from "ai"
+import { generateObject } from "ai"
 import { openai } from "@ai-sdk/openai"
+import { z } from "zod"
 
 export async function getResponse(question: string) {
-    const { text, finishReason, usage } = await generateText({
+    const { object } = await generateObject({
         model: openai("gpt-3.5-turbo"),
+        schema: z.object({
+            insults: z.array(z.string()),
+        }),
         prompt: question,
-        maxRetries: 0,
     })
 
-    return { text, finishReason, usage }
+    return { object }
 }
