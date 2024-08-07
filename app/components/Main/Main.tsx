@@ -47,7 +47,7 @@ export default function Home() {
         <section className="py-20">
             <div className="inner text-center">
                 <div>
-                    {loading && <p>Loading...</p>}
+                    {loading && <p className="mb-10">Loading...</p>}
                     {generation.insults.length > 0 && (
                         <div className="py-10 text-center max-w-2xl mx-auto">
                             <h2 className="text-3xl font-serif">{currentInsult}</h2>
